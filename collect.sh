@@ -60,4 +60,4 @@ unset file
 #emailing the captured information to the Admin
 cat /tmp/sample.out|mailx -s "configuration of `hostname`" $1
 #removing the captured file
-rm -rf /tmp/sample.out
+#rm -rf /tmp/sample.out
