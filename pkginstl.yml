@@ -1,0 +1,23 @@
+---
+- name: To install httpd package
+  hosts: ansibleclnt
+  sudo: true
+  remote_user: ansiuser
+  tasks:
+  - name: The below packages to be installed and service will be restarted
+    yum: name=httpd state=latest
+  - name: to restart httpd
+    service: name=httpd state=restarted
+  - name: To create index file & provide ownership
+    file: 
+      path=/var/www/html/index.html 
+      state=touch 
+      owner=ansiuser
+      group=ansiuser
+      mode=0755
+  - name: To copy the contents
+    copy: 
+      content="This is my first file\n" 
+      dest=/var/www/html/index.html 
+      force=yes 
+...
